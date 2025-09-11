@@ -14,13 +14,12 @@ export default function PortfolioPage() {
                 <span className='text-[16px] font-medium text-gray-600'>Back to Home</span>
             </button>
             <div className='text-center text-[#1c1c1c] flex flex-col items-center'>
-                <h1 className='text-[36px] font-bold tracking-[-0.04em] [text-shadow:0_0_24px_rgba(0,0,0,0.24)]'>Projects I’ve Brought to Life</h1>
+                <h1 className='text-[36px] font-bold tracking-[-0.04em] [text-shadow:0_0_24px_rgba(0,0,0,0.24)]'>Projects I've Brought to Life</h1>
                 <p className='text-[20px] text-gray-400'>Every project tells a story. Here are some highlights where design meets functionality</p>
             </div>
             <div className=''>
 
             </div>
-
         </div>
     )
 }
