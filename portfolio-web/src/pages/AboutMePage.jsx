@@ -21,14 +21,14 @@ export default function AboutMePage() {
         <div className='text-[#1C1C1C] w-full h-full flex flex-col items-center gap-y-[40px] py-[40px] px-4 relative'>
             <button 
                 onClick={() => navigate('/')}
-                className="absolute top-8 left-8 flex items-center gap-x-[12px] hover:gap-x-[24px] transition-all rounded-full font-medium px-[24px] py-[12px] cursor-pointer rounded-full bg-gray-100 text-[#1c1c1c] text-[20px] z-10"
+                className="absolute top-4 sm:top-8 left-4 sm:left-8 flex items-center gap-x-[12px] hover:gap-x-[24px] transition-all rounded-full font-medium px-[16px] sm:px-[24px] py-[10px] sm:py-[12px] cursor-pointer rounded-full bg-gray-100 text-[#1c1c1c] text-[16px] sm:text-[20px] z-10"
             >
                 <ArrowLeft size={20} className='text-gray-500' />
                 <span className='text-[16px] font-medium text-gray-600'>Back to Home</span>
             </button>
             <div className="w-full flex flex-col items-center max-w-3xl gap-8 px-4">
-                <img src={AboutMe} alt="My Photo" className="w-40 h-40 rounded-full" />
-                <p className="text-lg leading-relaxed text-gray-500 text-center tracking-[-0.04em]"><span className="font-caveat text-xl">Hi, </span> I'm Atqiya Haydar! I'm a final-year Computer Science student at ITB (one of Indonesia's top 3 universities). I'm passionate about creating beautiful, user-centered digital experiences through product design and front-end engineering.</p>
+                <img src={AboutMe} alt="My Photo" className="w-32 h-32 sm:w-40 sm:h-40 rounded-full" />
+                <p className="text-base sm:text-lg leading-relaxed text-gray-500 text-center tracking-[-0.04em] px-2 sm:px-0"><span className="font-caveat text-xl">Hi, </span> I'm Atqiya Haydar! I'm a final-year Computer Science student at ITB (one of Indonesia's top 3 universities). I'm passionate about creating beautiful, user-centered digital experiences through product design and front-end engineering.</p>
                 <div className="flex items-center gap-6">
                     <a 
                         href="https://www.instagram.com/atqiyahaydar/" 
@@ -48,7 +48,7 @@ export default function AboutMePage() {
                     </a>
                 </div>  
             </div> 
-            <div className="w-full flex flex-col items-center px-4 gap-8 px-4 max-w-3xl">
+            <div className="w-full flex flex-col items-center px-4 gap-8 max-w-3xl">
                 <h3 className="text-[#1c1c1c] font-medium text-xl [text-shadow:0_0_24px_rgba(0,0,0,0.24)] tracking-[-0.04em]">Work Experiences</h3>
                 <div className="flex flex-col items-center gap-y-4 w-full">
                     {WorkExperiences.sort((a, b) => b.year - a.year).map((experience) => (
@@ -57,15 +57,15 @@ export default function AboutMePage() {
                             className="w-full flex justify-between items-center py-2 border-b border-gray-100"
                         >
                             <div className="flex flex-col">
-                                <h4 className="text-lg text-gray-800 font-medium tracking-[-0.04em]">
+                                <h4 className="text-base sm:text-lg text-gray-800 font-medium tracking-[-0.04em]">
                                     {experience.position}
                                 </h4>
-                                <p className="text-gray-600 text-sm">
+                                <p className="text-gray-600 text-xs sm:text-sm">
                                     {experience.company}
                                 </p>
                             </div>
                             <div className="text-right">
-                                <span className="text-gray-500 text-sm font-medium">
+                                <span className="text-gray-500 text-xs sm:text-sm font-medium">
                                     {experience.year}
                                 </span>
                             </div>
@@ -73,7 +73,7 @@ export default function AboutMePage() {
                     ))}
                 </div>
             </div>   
-            <div className="w-full flex flex-col items-center px-4 gap-8 px-4 max-w-3xl">
+            <div className="w-full flex flex-col items-center px-4 gap-8 max-w-3xl">
                 <h3 className="text-[#1c1c1c] font-medium text-xl [text-shadow:0_0_24px_rgba(0,0,0,0.24)] tracking-[-0.04em]">Certifications</h3>
                 <div className="flex flex-col items-center gap-y-4 w-full">
                     {Certifications.map((cert) => (
@@ -82,10 +82,10 @@ export default function AboutMePage() {
                             className="w-full flex justify-between items-center py-2 border-b border-gray-100"
                         >
                             <div className="flex flex-col">
-                                <h4 className="text-lg text-gray-800 font-medium tracking-[-0.04em]">
+                                <h4 className="text-base sm:text-lg text-gray-800 font-medium tracking-[-0.04em]">
                                     {cert.certification}
                                 </h4>
-                                <p className="text-gray-600 text-sm">
+                                <p className="text-gray-600 text-xs sm:text-sm">
                                     {cert.issuer}
                                 </p>
                             </div>
@@ -103,7 +103,7 @@ export default function AboutMePage() {
                     ))}
                 </div>
             </div>
-            <p></p>
+            <p className='px-4 text-center'></p>
         </div>
     )
 }

@@ -101,13 +101,13 @@ export default function HomePage() {
             </motion.p>
           </motion.div>
           <motion.div 
-            className='flex flex-col items-center gap-y-[80px]'
+            className='flex flex-col items-center gap-y-[56px] sm:gap-y-[72px] md:gap-y-[80px]'
             variants={textVariants}
           >
             <div className='flex flex-col gap-y-[12px] text-center items-center text-[#1C1C1C]'>
               <SplitText
                 text="Creating user-first designs and scalable front-end systems that drive results"
-                className="text-[64px] font-bold max-w-[1200px] tracking-[-0.04em] [text-shadow:0_0_24px_rgba(0,0,0,0.24)]"
+                className="text-[28px] sm:text-[40px] md:text-[56px] lg:text-[64px] font-bold max-w-[1200px] tracking-[-0.04em] [text-shadow:0_0_24px_rgba(0,0,0,0.24)]"
                 delay={28}
                 duration={0.6}
                 ease="power3.out"
@@ -119,7 +119,7 @@ export default function HomePage() {
                 textAlign="center"
               />
               <motion.p 
-                className='text-[24px] max-w-[675px] text-gray-400'
+                className='text-base sm:text-lg md:text-[20px] max-w-[675px] text-gray-400 px-4'
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ 
@@ -134,12 +134,12 @@ export default function HomePage() {
               </motion.p>
             </div>
             <motion.div 
-              className='flex gap-x-[16px]'
+              className='flex flex-col sm:flex-row gap-y-3 sm:gap-y-0 gap-x-[16px] w-full justify-center px-4'
               variants={buttonsVariants}
             >
               <a href="/portfolio">
                 <motion.button 
-                  className="flex items-center gap-x-[12px] transition-all rounded-full font-medium px-[24px] py-[12px] cursor-pointer rounded-full bg-[#1c1c1c] text-white text-[20px]"
+                  className="w-full sm:w-auto flex items-center justify-center gap-x-[12px] hover:gap-x-[24px] transition-all rounded-full font-medium px-[20px] sm:px-[24px] py-[10px] sm:py-[12px] cursor-pointer rounded-full bg-[#1c1c1c] text-white text-[18px] sm:text-[20px]"
                   whileHover={{ 
                     scale: 1.05,
                     y: -2,
@@ -155,7 +155,7 @@ export default function HomePage() {
               </a>
               <a href="/about-me">
                 <motion.button 
-                  className="flex items-center gap-x-[12px] transition-all rounded-full font-medium px-[24px] py-[12px] cursor-pointer rounded-full bg-gray-100 text-[#1c1c1c] text-[20px]"
+                  className="w-full sm:w-auto flex items-center justify-center gap-x-[12px] transition-all rounded-full font-medium px-[20px] sm:px-[24px] py-[10px] sm:py-[12px] cursor-pointer rounded-full bg-gray-100 text-[#1c1c1c] text-[18px] sm:text-[20px]"
                   whileHover={{ 
                     scale: 1.05,
                     y: -2,
@@ -166,7 +166,7 @@ export default function HomePage() {
                     transition: { duration: 0.1 }
                   }}
                 >
-                    Learn About Me <Send className='w-[24px] h-[24px]' />
+                  Learn About Me <Send className='w-[24px] h-[24px]' />
                 </motion.button>
               </a>
             </motion.div>
