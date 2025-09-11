@@ -1,5 +1,6 @@
 import AboutMe from "../assets/About Me.png"
-import { Instagram, Linkedin, ExternalLink } from 'lucide-react'
+import { Instagram, Linkedin, ExternalLink, ArrowLeft } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 const WorkExperiences = [
     { id: 1, position: "UI/UX Designer Intern", company: "Datare", year: 2023 },
@@ -15,8 +16,16 @@ const Certifications = [
 ]
 
 export default function AboutMePage() {
+    const navigate = useNavigate();
     return (
         <div className='text-[#1C1C1C] w-full h-full flex flex-col items-center gap-y-[40px] py-[40px] px-4 relative'>
+            <button 
+                onClick={() => navigate('/')}
+                className="absolute top-8 left-8 flex items-center gap-x-[12px] hover:gap-x-[24px] transition-all rounded-full font-medium px-[24px] py-[12px] cursor-pointer rounded-full bg-gray-100 text-[#1c1c1c] text-[20px] z-10"
+            >
+                <ArrowLeft size={20} className='text-gray-500' />
+                <span className='text-[16px] font-medium text-gray-600'>Back to Home</span>
+            </button>
             <div className="w-full flex flex-col items-center max-w-3xl gap-8 px-4">
                 <img src={AboutMe} alt="My Photo" className="w-40 h-40 rounded-full" />
                 <p className="text-lg leading-relaxed text-gray-500 text-center tracking-[-0.04em]"><span className="font-caveat text-xl">Hi, </span> I'm Atqiya Haydar! I'm a final-year Computer Science student at ITB (one of Indonesia's top 3 universities). I'm passionate about creating beautiful, user-centered digital experiences through product design and front-end engineering.</p>

@@ -1,25 +1,181 @@
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { useMemo, useRef, useState } from 'react';
+import ProfilePhoto from "../assets/Profile.png";
+import SplitText from '@/components/SplitText';
 
 export default function PortfolioPage() {
     const navigate = useNavigate();
+    const [activeProject, setActiveProject] = useState(null);
+
+    const projects = useMemo(() => ([
+        {
+            id: 1,
+            name: "Modern Dashboard",
+            thumbnail: ProfilePhoto,
+            images: [ProfilePhoto, ProfilePhoto, ProfilePhoto]
+        },
+        {
+            id: 2,
+            name: "E-commerce UI",
+            thumbnail: ProfilePhoto,
+            images: [ProfilePhoto, ProfilePhoto, ProfilePhoto]
+        },
+        {
+            id: 3,
+            name: "Mobile App Concept",
+            thumbnail: ProfilePhoto,
+            images: [ProfilePhoto, ProfilePhoto, ProfilePhoto]
+        },
+        {
+            id: 4,
+            name: "Portfolio Website",
+            thumbnail: ProfilePhoto,
+            images: [ProfilePhoto, ProfilePhoto, ProfilePhoto]
+        },
+        {
+            id: 5,
+            name: "Design System",
+            thumbnail: ProfilePhoto,
+            images: [ProfilePhoto, ProfilePhoto, ProfilePhoto]
+        },
+        {
+            id: 6,
+            name: "Analytics Dashboard",
+            thumbnail: ProfilePhoto,
+            images: [ProfilePhoto, ProfilePhoto, ProfilePhoto]
+        },
+    ]), []);
+
+    function GalleryParallax({ project, onClose }) {
+        const containerRef = useRef(null);
+        const { scrollYProgress } = useScroll({ container: containerRef });
+        const ySlow = useTransform(scrollYProgress, [0, 1], [0, -40]);
+        const yMedium = useTransform(scrollYProgress, [0, 1], [0, -80]);
+        const yFast = useTransform(scrollYProgress, [0, 1], [0, -120]);
+
+        return (
+            <AnimatePresence>
+                <motion.div
+                    className="fixed inset-0 z-50"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                >
+                    <motion.div
+                        className="absolute inset-0 bg-black/40"
+                        onClick={onClose}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                    />
+                    <motion.div
+                        className="absolute inset-0 flex items-center justify-center p-4"
+                        initial={{ scale: 0.98, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0.98, opacity: 0 }}
+                        transition={{ type: 'spring', stiffness: 120, damping: 16 }}
+                    >
+                        <div className="relative w-full max-w-5xl h-[70vh] rounded-2xl bg-white overflow-hidden">
+                            <div ref={containerRef} className="w-full h-full overflow-y-auto">
+                                <div className="p-6 flex items-center justify-between sticky top-0 bg-white/80 backdrop-blur-sm z-10 border-b">
+                                    <h3 className="text-xl font-semibold tracking-[-0.02em] text-[#1c1c1c]">{project.name}</h3>
+                                    <button onClick={onClose} className="px-3 py-1.5 text-sm rounded-full bg-gray-100 hover:bg-gray-200 text-[#1c1c1c]">Close</button>
+                                </div>
+                                <div className="relative p-6 space-y-6">
+                                    {project.images.map((src, idx) => {
+                                        const y = idx % 3 === 0 ? ySlow : idx % 3 === 1 ? yMedium : yFast;
+                                        return (
+                                            <motion.div
+                                                key={idx}
+                                                style={{ y }}
+                                                className="w-full overflow-hidden rounded-xl border border-gray-100 bg-gray-50"
+                                            >
+                                                <img src={src} alt={`preview-${idx}`} className="w-full h-[260px] object-cover" />
+                                            </motion.div>
+                                        )
+                                    })}
+                                    <div className="h-2" />
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+                </motion.div>
+            </AnimatePresence>
+        );
+    }
 
     return (
         <div className='text-[#1C1C1C] w-full h-full flex flex-col items-center gap-y-[40px] py-[40px] px-4 relative'>
-            <button 
+            <motion.button
                 onClick={() => navigate('/')}
-                className="absolute top-8 left-8 flex items-center gap-x-[12px] hover:gap-x-[24px] transition-all rounded-full font-medium px-[24px] py-[12px] cursor-pointer rounded-full bg-gray-100 text-[#1c1c1c] text-[20px] z-10"
+                className="absolute top-8 left-8 flex items-center gap-x-[12px] transition-all rounded-full font-medium px-[24px] py-[12px] cursor-pointer rounded-full bg-gray-100 text-[#1c1c1c] text-[20px] z-10"
+                whileHover={{ 
+                    scale: 1.05,
+                    y: -2,
+                    transition: { duration: 0.2 }
+                  }}
+                  whileTap={{ 
+                    scale: 0.95,
+                    transition: { duration: 0.1 }
+                  }}
             >
                 <ArrowLeft size={20} className='text-gray-500' />
                 <span className='text-[16px] font-medium text-gray-600'>Back to Home</span>
-            </button>
+            </motion.button>
             <div className='text-center text-[#1c1c1c] flex flex-col items-center'>
-                <h1 className='text-[36px] font-bold tracking-[-0.04em] [text-shadow:0_0_24px_rgba(0,0,0,0.24)]'>Projects I've Brought to Life</h1>
-                <p className='text-[20px] text-gray-400'>Every project tells a story. Here are some highlights where design meets functionality</p>
+                <SplitText
+                    text="Projects I've Brought to Life"
+                    className="text-[36px] font-bold tracking-[-0.04em] [text-shadow:0_0_24px_rgba(0,0,0,0.24)]"
+                    delay={28}
+                    duration={0.6}
+                    ease="power3.out"
+                    splitType="chars"
+                    from={{ opacity: 0, y: 40 }}
+                    to={{ opacity: 1, y: 0 }}
+                    threshold={0.1}
+                    rootMargin="-100px"
+                    textAlign="center"
+                />
+                <motion.p 
+                    className='text-[20px] text-gray-400'
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ 
+                      delay: 0.2, 
+                      duration: 0.8,
+                      type: "spring",
+                      stiffness: 60,
+                      damping: 12
+                    }}
+                >Every project tells a story. Here are some highlights where design meets functionality</motion.p>
             </div>
-            <div className=''>
+            <div className='w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
+                {projects.map((project) => (
+                    <motion.button
+                        key={project.id}
+                        onClick={() => setActiveProject(project)}
+                        className="group text-left bg-white rounded-2xl border border-gray-100 overflow-hidden"
+                        whileHover={{ y: -4 }}
+                        transition={{ type: 'spring', stiffness: 220, damping: 18 }}
+                    >
+                        <div className="relative">
+                            <img src={project.thumbnail} alt={project.name} className="w-full h-48 object-cover" />
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
+                        </div>
+                        <div className="p-4">
+                            <h3 className='text-[18px] font-medium tracking-[-0.02em] text-[#1c1c1c]'>{project.name}</h3>
+                        </div>
+                    </motion.button>
+                ))}
+            </div>
 
-            </div>
+            <AnimatePresence>
+                {activeProject && (
+                    <GalleryParallax project={activeProject} onClose={() => setActiveProject(null)} />
+                )}
+            </AnimatePresence>
         </div>
     )
 }
