@@ -139,7 +139,7 @@ export default function HomePage() {
             >
               <a href="/portfolio">
                 <motion.button 
-                  className="flex items-center gap-x-[12px] hover:gap-x-[24px] transition-all rounded-full font-medium px-[24px] py-[12px] cursor-pointer rounded-full bg-[#1c1c1c] text-white text-[20px]"
+                  className="flex items-center gap-x-[12px] transition-all rounded-full font-medium px-[24px] py-[12px] cursor-pointer rounded-full bg-[#1c1c1c] text-white text-[20px]"
                   whileHover={{ 
                     scale: 1.05,
                     y: -2,
@@ -153,9 +153,9 @@ export default function HomePage() {
                   View My Work <BriefcaseBusiness className='w-[24px] h-[24px]' />
                 </motion.button>
               </a>
-              <a target='_blank' href='https://www.linkedin.com/in/atqiyahaydar/'>
+              <a href="/about-me">
                 <motion.button 
-                  className="flex items-center gap-x-[12px] hover:gap-x-[24px] transition-all rounded-full font-medium px-[24px] py-[12px] cursor-pointer rounded-full bg-gray-100 text-[#1c1c1c] text-[20px]"
+                  className="flex items-center gap-x-[12px] transition-all rounded-full font-medium px-[24px] py-[12px] cursor-pointer rounded-full bg-gray-100 text-[#1c1c1c] text-[20px]"
                   whileHover={{ 
                     scale: 1.05,
                     y: -2,
@@ -166,7 +166,7 @@ export default function HomePage() {
                     transition: { duration: 0.1 }
                   }}
                 >
-                  Let's Connect <Send className='w-[24px] h-[24px]' />
+                    Learn About Me <Send className='w-[24px] h-[24px]' />
                 </motion.button>
               </a>
             </motion.div>
