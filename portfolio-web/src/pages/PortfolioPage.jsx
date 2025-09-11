@@ -17,45 +17,45 @@ export default function PortfolioPage() {
     const projects = useMemo(() => ([
         {
             id: 1,
-            name: "Modern Dashboard",
+            name: "Hentii",
             thumbnail: Mock2,
             images: [Mock2, Mock3, Mock4],
-            description: "Analytics dashboard with clean data viz and dark mode."
+            description: "Mobile Application to Accompany Users in the Process of Quitting Smoking Gradually, Healthily, and Sustainably."
         },
         {
             id: 2,
-            name: "E-commerce UI",
+            name: "Obatku",
             thumbnail: Mock3,
             images: [Mock3, Mock5, Mock6],
-            description: "E-commerce flows: product, cart, and checkout optimized for UX."
+            description: "An application that makes it easier for you to manage your medication and provides better self-medication guidance."
         },
         {
             id: 3,
-            name: "Mobile App Concept",
+            name: "EcoTrail",
             thumbnail: Mock4,
             images: [Mock4, Mock2, Mock7],
-            description: "Cross‑platform mobile concept with motion micro‑interactions."
+            description: "Green Transportation App and Carbon Emission Tracker"
         },
         {
             id: 4,
-            name: "Portfolio Website",
+            name: "Ainstein",
             thumbnail: Mock5,
             images: [Mock5, Mock6, Mock3],
-            description: "Personal portfolio with smooth animations and responsive grid."
+            description: "An app that can turn any topic into an intelligent learning experience with AI-generated lessons, quizzes, and videos.."
         },
         {
             id: 5,
-            name: "Design System",
+            name: "Ainstein",
             thumbnail: Mock6,
             images: [Mock6, Mock2, Mock4],
-            description: "Token‑based design system with reusable components."
+            description: "Spotify clone app Find music that fits your mood, every time."
         },
         {
             id: 6,
-            name: "Analytics Dashboard",
+            name: "Trackure",
             thumbnail: Mock7,
             images: [Mock7, Mock5, Mock2],
-            description: "KPI dashboard with real‑time updates and filters."
+            description: "An application that can Manage, Monitor, and Accelerate the Procurement of Goods & Services with a Transparent Tracking System that makes every process run efficiently."
         },
     ]), []);
 
@@ -123,10 +123,10 @@ export default function PortfolioPage() {
     }
 
     return (
-        <div className='text-[#1C1C1C] w-full h-full flex flex-col items-center gap-y-[40px] py-[40px] px-4 relative'>
+        <div className='text-[#1C1C1C] w-full h-full flex flex-col items-center gap-y-[40px] py-[100px] lg:py-[40px] px-4 relative'>
             <motion.button
                 onClick={() => navigate('/')}
-                className="absolute top-8 left-8 flex items-center gap-x-[12px] transition-all rounded-full font-medium px-[24px] py-[12px] cursor-pointer rounded-full bg-gray-100 text-[#1c1c1c] text-[20px] z-10"
+                className="fixed top-8 left-8 flex items-center gap-x-[12px] transition-all rounded-full font-medium px-[24px] py-[12px] cursor-pointer rounded-full bg-gray-100 text-[#1c1c1c] text-[20px] z-10"
                 whileHover={{ 
                     scale: 1.05,
                     y: -2,
