@@ -2,7 +2,12 @@ import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { useMemo, useRef, useState } from 'react';
-import ProfilePhoto from "../assets/Profile.png";
+import Mock2 from "../assets/mockup/2.png";
+import Mock3 from "../assets/mockup/3.png";
+import Mock4 from "../assets/mockup/4.png";
+import Mock5 from "../assets/mockup/5.png";
+import Mock6 from "../assets/mockup/6.png";
+import Mock7 from "../assets/mockup/7.png";
 import SplitText from '@/components/SplitText';
 
 export default function PortfolioPage() {
@@ -13,38 +18,44 @@ export default function PortfolioPage() {
         {
             id: 1,
             name: "Modern Dashboard",
-            thumbnail: ProfilePhoto,
-            images: [ProfilePhoto, ProfilePhoto, ProfilePhoto]
+            thumbnail: Mock2,
+            images: [Mock2, Mock3, Mock4],
+            description: "Analytics dashboard with clean data viz and dark mode."
         },
         {
             id: 2,
             name: "E-commerce UI",
-            thumbnail: ProfilePhoto,
-            images: [ProfilePhoto, ProfilePhoto, ProfilePhoto]
+            thumbnail: Mock3,
+            images: [Mock3, Mock5, Mock6],
+            description: "E-commerce flows: product, cart, and checkout optimized for UX."
         },
         {
             id: 3,
             name: "Mobile App Concept",
-            thumbnail: ProfilePhoto,
-            images: [ProfilePhoto, ProfilePhoto, ProfilePhoto]
+            thumbnail: Mock4,
+            images: [Mock4, Mock2, Mock7],
+            description: "Cross‑platform mobile concept with motion micro‑interactions."
         },
         {
             id: 4,
             name: "Portfolio Website",
-            thumbnail: ProfilePhoto,
-            images: [ProfilePhoto, ProfilePhoto, ProfilePhoto]
+            thumbnail: Mock5,
+            images: [Mock5, Mock6, Mock3],
+            description: "Personal portfolio with smooth animations and responsive grid."
         },
         {
             id: 5,
             name: "Design System",
-            thumbnail: ProfilePhoto,
-            images: [ProfilePhoto, ProfilePhoto, ProfilePhoto]
+            thumbnail: Mock6,
+            images: [Mock6, Mock2, Mock4],
+            description: "Token‑based design system with reusable components."
         },
         {
             id: 6,
             name: "Analytics Dashboard",
-            thumbnail: ProfilePhoto,
-            images: [ProfilePhoto, ProfilePhoto, ProfilePhoto]
+            thumbnail: Mock7,
+            images: [Mock7, Mock5, Mock2],
+            description: "KPI dashboard with real‑time updates and filters."
         },
     ]), []);
 
@@ -79,8 +90,13 @@ export default function PortfolioPage() {
                     >
                         <div className="relative w-full max-w-5xl h-[70vh] rounded-2xl bg-white overflow-hidden">
                             <div ref={containerRef} className="w-full h-full overflow-y-auto">
-                                <div className="p-6 flex items-center justify-between sticky top-0 bg-white/80 backdrop-blur-sm z-10 border-b">
-                                    <h3 className="text-xl font-semibold tracking-[-0.02em] text-[#1c1c1c]">{project.name}</h3>
+                                <div className="p-6 flex items-start justify-between sticky top-0 bg-white/80 backdrop-blur-sm z-10 border-b gap-4">
+                                    <div className="flex-1 min-w-0">
+                                        <h3 className="text-xl font-semibold tracking-[-0.02em] text-[#1c1c1c] truncate">{project.name}</h3>
+                                        {project.description && (
+                                            <p className="text-sm text-gray-600 mt-1">{project.description}</p>
+                                        )}
+                                    </div>
                                     <button onClick={onClose} className="px-3 py-1.5 text-sm rounded-full bg-gray-100 hover:bg-gray-200 text-[#1c1c1c]">Close</button>
                                 </div>
                                 <div className="relative p-6 space-y-6">
@@ -151,25 +167,33 @@ export default function PortfolioPage() {
                     }}
                 >Every project tells a story. Here are some highlights where design meets functionality</motion.p>
             </div>
-            <div className='w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
+            <motion.div 
+                className='w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'
+                initial={{ scale: 0.75, opacity: 0.75 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            >
                 {projects.map((project) => (
                     <motion.button
                         key={project.id}
                         onClick={() => setActiveProject(project)}
-                        className="group text-left bg-white rounded-2xl border border-gray-100 overflow-hidden"
+                        className="group text-left bg-white rounded-2xl border border-gray-100 overflow-hidden cursor-pointer"
                         whileHover={{ y: -4 }}
                         transition={{ type: 'spring', stiffness: 220, damping: 18 }}
                     >
                         <div className="relative">
-                            <img src={project.thumbnail} alt={project.name} className="w-full h-48 object-cover" />
+                            <img src={project.thumbnail} alt={project.name} className="w-full aspect-square object-cover" />
                             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
                         </div>
                         <div className="p-4">
                             <h3 className='text-[18px] font-medium tracking-[-0.02em] text-[#1c1c1c]'>{project.name}</h3>
+                            {project.description && (
+                                <p className='text-[14px] text-gray-500 line-clamp-2'>{project.description}</p>
+                            )}
                         </div>
                     </motion.button>
                 ))}
-            </div>
+            </motion.div>
 
             <AnimatePresence>
                 {activeProject && (
